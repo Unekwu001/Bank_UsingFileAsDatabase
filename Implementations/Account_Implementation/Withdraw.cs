@@ -63,7 +63,7 @@ namespace Bank_UsingFileAsDatabase.Implementations.Account_Implementation
 				accountToUpdate.Balance -= CleanAmountToWithdraw;
 				Console.WriteLine($"\nYou have successfully withdrawn {CleanAmountToWithdraw} from your account with account number {AccountToWithdrawFrom}");
 
-
+			 
 				AccountStatement myAccStatement = new AccountStatement(LoggedInCustomer.CustomerId, LoggedInCustomer.Fullname,accountToUpdate.AccountNumber,"DEBIT ALERT", $"{CleanAmountToWithdraw}", accountToUpdate.Balance, DateTime.Now);
 
 				using (StreamWriter writer = new StreamWriter("AccountStatements.txt", true))

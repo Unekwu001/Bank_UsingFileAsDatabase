@@ -50,7 +50,7 @@ namespace Bank_UsingFileAsDatabase.Implementations.Account_Implementation
 				accountToUpdate.Balance += CleanAmountToDeposit;
 				Console.WriteLine($"You have successfully deposited {CleanAmountToDeposit} into your account with account number {AccountToDepositTo}");
 
-
+				 
 				AccountStatement myAccStatement = new AccountStatement(LoggedInCustomer.CustomerId, LoggedInCustomer.Fullname, accountToUpdate.AccountNumber, "CREDIT ALERT", $"{CleanAmountToDeposit}", accountToUpdate.Balance, DateTime.Now);
 
 				using (StreamWriter writer = new StreamWriter("AccountStatements.txt", true))

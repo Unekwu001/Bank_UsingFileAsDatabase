@@ -53,14 +53,16 @@ namespace Bank_UsingFileAsDatabase.Implementations.Account_Implementation
 				Console.WriteLine($"{CleanAmountToTransfer} has been Sent to {AccountToTransferTo} successfully!");
 
 				//
+				 
 				AccountStatement myAccStatement = new AccountStatement(loggedInCustomer.CustomerId, loggedInCustomer.Fullname,giver.AccountNumber, $"You Transfered {CleanAmountToTransfer} to {receiver.AccountNumber}", $"{CleanAmountToTransfer}", giver.Balance, DateTime.Now);
 
 				using (StreamWriter writer = new StreamWriter("AccountStatements.txt", true))
 				{
 					writer.WriteLine($"| {myAccStatement.Id}   |   {myAccStatement.Name}   |  {myAccStatement.Acc_Involved}  | {myAccStatement.Description}   |  {myAccStatement.Amount}   |  {myAccStatement.Balance}  |  {myAccStatement.Date} |\n\n");
 				}
-				
+
 				//
+				 
 				AccountStatement myAccStatement2 = new AccountStatement(loggedInCustomer.CustomerId, loggedInCustomer.Fullname,receiver.AccountNumber, $"You Received {CleanAmountToTransfer} from {giver.AccountNumber}", $"{CleanAmountToTransfer}", receiver.Balance, DateTime.Now);
 
 				using (StreamWriter writer = new StreamWriter("AccountStatements.txt", true))
@@ -77,6 +79,7 @@ namespace Bank_UsingFileAsDatabase.Implementations.Account_Implementation
 				Console.WriteLine($"{CleanAmountToTransfer} has been Sent to {AccountToTransferTo} successfully!");
 
 				//
+				 
 				AccountStatement myAccStatement = new AccountStatement(loggedInCustomer.CustomerId, loggedInCustomer.Fullname,giver.AccountNumber, $"You Transfered {CleanAmountToTransfer} to {receiver.AccountNumber}", $"{CleanAmountToTransfer}", giver.Balance, DateTime.Now);
 
 				using (StreamWriter writer = new StreamWriter("AccountStatements.txt", true))

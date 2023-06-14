@@ -54,6 +54,7 @@ namespace Bank_UsingFileAsDatabase.Implementations.Account_Implementation
 				}
 				Console.WriteLine(printAll);				
 			}
+			Console.ReadKey();
 		}
 	}
 }

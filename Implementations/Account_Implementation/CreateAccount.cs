@@ -77,8 +77,8 @@ namespace Bank_UsingFileAsDatabase.Implementations.Account_Implementation
 						Bal = cleanAmount;
 						Console.WriteLine($"You have successfully added {cleanAmount} naira");
 
-						
-						AccountStatement myAccStatement = new AccountStatement(loggedInCustomer.CustomerId, loggedInCustomer.Fullname,AcNo, $"Account {AcNo} of type {AcType} was created", enteredAmount , Bal,DateTime.Now);
+						 
+						AccountStatement myAccStatement = new AccountStatement(loggedInCustomer.CustomerId, loggedInCustomer.Fullname,AcNo, $"Account {AcNo} of type {AcType} was created", enteredAmount , Bal, DateTime.Now);
 
 						using (StreamWriter writer = new StreamWriter("AccountStatements.txt", true))
 						{
@@ -93,7 +93,7 @@ namespace Bank_UsingFileAsDatabase.Implementations.Account_Implementation
 					Bal = 0m;
 					Console.WriteLine($"You have successfully created a new account.\n ");
 
-
+					string date = DateTime.Now.ToString();
 					AccountStatement myAccStatement = new AccountStatement(loggedInCustomer.CustomerId, loggedInCustomer.Fullname, AcNo, $"Account {AcNo} of type {AcType} was created", "0", Bal, DateTime.Now);
 
 					using (StreamWriter writer = new StreamWriter("AccountStatements.txt", true))
