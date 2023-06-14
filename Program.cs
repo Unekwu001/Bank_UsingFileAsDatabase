@@ -16,6 +16,7 @@ services.AddScoped<IDeposit, Deposit>();
 services.AddScoped<IWithdraw, Withdraw>();
 services.AddScoped<ITransfer, Transfer>();
 services.AddScoped<ICheckBalance, CheckBalance>();
+services.AddScoped<IGetAccountStatement, GetAccountStatement>();
 services.AddScoped<ILogOut, LogOut>();
 
 services.AddSingleton<HomePage>();

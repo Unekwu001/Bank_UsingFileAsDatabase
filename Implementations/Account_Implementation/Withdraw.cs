@@ -64,11 +64,11 @@ namespace Bank_UsingFileAsDatabase.Implementations.Account_Implementation
 				Console.WriteLine($"\nYou have successfully withdrawn {CleanAmountToWithdraw} from your account with account number {AccountToWithdrawFrom}");
 
 
-				AccountStatement myAccStatement = new AccountStatement(LoggedInCustomer.CustomerId, LoggedInCustomer.Fullname, "DEBIT", $"{CleanAmountToWithdraw}", accountToUpdate.Balance, DateTime.Now);
+				AccountStatement myAccStatement = new AccountStatement(LoggedInCustomer.CustomerId, LoggedInCustomer.Fullname,accountToUpdate.AccountNumber,"DEBIT ALERT", $"{CleanAmountToWithdraw}", accountToUpdate.Balance, DateTime.Now);
 
 				using (StreamWriter writer = new StreamWriter("AccountStatements.txt", true))
 				{
-					writer.WriteLine($"| {myAccStatement.Id}   |   {myAccStatement.Name}   |   {myAccStatement.Description}   |  {myAccStatement.Amount}   |  {myAccStatement.Balance}  |  {myAccStatement.Date} |\n\n");
+					writer.WriteLine($"| {myAccStatement.Id}   |   {myAccStatement.Name}   |  {myAccStatement.Acc_Involved}  |  {myAccStatement.Description}   |  {myAccStatement.Amount}   |  {myAccStatement.Balance}  |  {myAccStatement.Date} |\n\n");
 				}
 			}
 

@@ -51,13 +51,12 @@ namespace Bank_UsingFileAsDatabase.Implementations.Account_Implementation
 				Console.WriteLine($"You have successfully deposited {CleanAmountToDeposit} into your account with account number {AccountToDepositTo}");
 
 
-				AccountStatement myAccStatement = new AccountStatement(LoggedInCustomer.CustomerId, LoggedInCustomer.Fullname, "CREDIT", $"{CleanAmountToDeposit}", accountToUpdate.Balance, DateTime.Now);
+				AccountStatement myAccStatement = new AccountStatement(LoggedInCustomer.CustomerId, LoggedInCustomer.Fullname, accountToUpdate.AccountNumber, "CREDIT ALERT", $"{CleanAmountToDeposit}", accountToUpdate.Balance, DateTime.Now);
 
 				using (StreamWriter writer = new StreamWriter("AccountStatements.txt", true))
 				{
-					writer.WriteLine($"| {myAccStatement.Id}   |   {myAccStatement.Name}   |   {myAccStatement.Description}   |  {myAccStatement.Amount}   |  {myAccStatement.Balance}  |  {myAccStatement.Date} |\n\n");
+					writer.WriteLine($"| {myAccStatement.Id}   |   {myAccStatement.Name}   |  {myAccStatement.Acc_Involved}  |  {myAccStatement.Description}   |  {myAccStatement.Amount}   |  {myAccStatement.Balance}  |  {myAccStatement.Date} |\n\n");
 				}
-
 
 			}
 			// Update the Account.txt file with the new balance

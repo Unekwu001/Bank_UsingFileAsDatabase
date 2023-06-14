@@ -78,11 +78,11 @@ namespace Bank_UsingFileAsDatabase.Implementations.Account_Implementation
 						Console.WriteLine($"You have successfully added {cleanAmount} naira");
 
 						
-						AccountStatement myAccStatement = new AccountStatement(loggedInCustomer.CustomerId, loggedInCustomer.Fullname, $"Account {AcNo} of type {AcType} was created", enteredAmount , Bal,DateTime.Now);
+						AccountStatement myAccStatement = new AccountStatement(loggedInCustomer.CustomerId, loggedInCustomer.Fullname,AcNo, $"Account {AcNo} of type {AcType} was created", enteredAmount , Bal,DateTime.Now);
 
 						using (StreamWriter writer = new StreamWriter("AccountStatements.txt", true))
 						{
-							writer.WriteLine($"| {myAccStatement.Id}   |   {myAccStatement.Name}   |   {myAccStatement.Description}   |  {myAccStatement.Amount}   |  {myAccStatement.Balance}  |  {myAccStatement.Date} |\n\n");
+							writer.WriteLine($"| {myAccStatement.Id}   |   {myAccStatement.Name}   |  {myAccStatement.Acc_Involved}  |  {myAccStatement.Description}   |  {myAccStatement.Amount}   |  {myAccStatement.Balance}  |  {myAccStatement.Date} |\n\n");
 						}
 
 					}
@@ -94,11 +94,11 @@ namespace Bank_UsingFileAsDatabase.Implementations.Account_Implementation
 					Console.WriteLine($"You have successfully created a new account.\n ");
 
 
-					AccountStatement myAccStatement = new AccountStatement(loggedInCustomer.CustomerId, loggedInCustomer.Fullname, $"Account {AcNo} of type {AcType} was created", "0", Bal, DateTime.Now);
+					AccountStatement myAccStatement = new AccountStatement(loggedInCustomer.CustomerId, loggedInCustomer.Fullname, AcNo, $"Account {AcNo} of type {AcType} was created", "0", Bal, DateTime.Now);
 
 					using (StreamWriter writer = new StreamWriter("AccountStatements.txt", true))
 					{
-						writer.WriteLine($"| {myAccStatement.Id}   |   {myAccStatement.Name}   |   {myAccStatement.Description}   |  {myAccStatement.Amount}   |  {myAccStatement.Balance}  |  {myAccStatement.Date} |\n\n");
+						writer.WriteLine($"| {myAccStatement.Id}   |   {myAccStatement.Name}   | {myAccStatement.Acc_Involved} |  {myAccStatement.Description}   |  {myAccStatement.Amount}   |  {myAccStatement.Balance}  |  {myAccStatement.Date} |\n\n");
 					}
 
 

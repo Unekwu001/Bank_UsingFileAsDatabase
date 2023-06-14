@@ -18,14 +18,16 @@ namespace Bank_UsingFileAsDatabase.Implementations.Account_Implementation
         private readonly ITransfer _transfer;
         private readonly ICheckBalance _chekBal;
         private readonly ILogOut _logOut;
-        public DashBoard(ICreateAccount createAcc, IDeposit deposit, IWithdraw withdraw, ITransfer transfer, ICheckBalance chekBal, ILogOut logOut)
+		private readonly IGetAccountStatement _getStatement;
+		public DashBoard(ICreateAccount createAcc, IDeposit deposit, IWithdraw withdraw, ITransfer transfer, ICheckBalance chekBal, IGetAccountStatement getStatement, ILogOut logOut)
         {
             _createAcc = createAcc;
             _deposit = deposit;
             _withdraw = withdraw;
             _transfer = transfer;
             _chekBal = chekBal;
-            _logOut = logOut;
+            _getStatement = getStatement;
+			_logOut = logOut;
         }
 
 
@@ -83,20 +85,19 @@ namespace Bank_UsingFileAsDatabase.Implementations.Account_Implementation
                 else if (mychoice == "5")
                 {
                     _chekBal.CheckAccountBalance(LoggedInCustomer);
-
-                    isValidChoice = true;
+					MyDashBoard(LoggedInCustomer);
+					isValidChoice = true;
                 }
                 else if (mychoice == "6")
                 {
-                    //_myAccService.PrintAccountStatement();
-
-                    isValidChoice = true;
+				    _getStatement.GetMyAccountStatement(LoggedInCustomer);
+					MyDashBoard(LoggedInCustomer);
+					isValidChoice = true;
                 }
 
                 else if (mychoice == "7")
                 {
                     _logOut.LogMeOut(LoggedInCustomer);
-
                     isValidChoice = true;
                 }
 

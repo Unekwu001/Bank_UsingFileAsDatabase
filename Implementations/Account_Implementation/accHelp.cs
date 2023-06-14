@@ -114,7 +114,7 @@ namespace Bank_UsingFileAsDatabase.Implementations.Account_Implementation
 
 
 
-		public static List<AccountStatement> ReadAccountStatemFile(string filePath)
+		public  List<AccountStatement> ReadAccountStatementFile(string filePath)
 		{
 			List<AccountStatement> Statements = new List<AccountStatement>();
 
@@ -127,16 +127,17 @@ namespace Bank_UsingFileAsDatabase.Implementations.Account_Implementation
 					{
 						string[] fields = line.Split('|');
 
-						if (fields.Length >= 6)
+						if (fields.Length >= 7)
 						{
 							string id = fields[1].Trim();
 							string name = fields[2].Trim();
-							string desCrptn = fields[3].Trim();
-							string amt = fields[4].Trim();
-							decimal Bal = decimal.Parse(fields[5].Trim());
-							DateTime date = DateTime.Parse(fields[6].Trim());
+							string accountInvolved = fields[3].Trim();
+							string desCrptn = fields[4].Trim();
+							string amt = fields[5].Trim();
+							decimal Bal = decimal.Parse(fields[6].Trim());
+							DateTime date = DateTime.Parse(fields[7].Trim());
 
-							AccountStatement statement = new AccountStatement(id, name, desCrptn,amt, Bal,date);
+							AccountStatement statement = new AccountStatement(id, name,accountInvolved, desCrptn,amt, Bal,date);
 							Statements.Add(statement);
 						}
 					}

@@ -52,14 +52,21 @@ namespace Bank_UsingFileAsDatabase.Implementations.Account_Implementation
 				receiver.Balance += CleanAmountToTransfer;
 				Console.WriteLine($"{CleanAmountToTransfer} has been Sent to {AccountToTransferTo} successfully!");
 
-
-				AccountStatement myAccStatement = new AccountStatement(loggedInCustomer.CustomerId, loggedInCustomer.Fullname, $"You Transfered {CleanAmountToTransfer} to {receiver.AccountNumber}", $"{CleanAmountToTransfer}", giver.Balance, DateTime.Now);
+				//
+				AccountStatement myAccStatement = new AccountStatement(loggedInCustomer.CustomerId, loggedInCustomer.Fullname,giver.AccountNumber, $"You Transfered {CleanAmountToTransfer} to {receiver.AccountNumber}", $"{CleanAmountToTransfer}", giver.Balance, DateTime.Now);
 
 				using (StreamWriter writer = new StreamWriter("AccountStatements.txt", true))
 				{
-					writer.WriteLine($"| {myAccStatement.Id}   |   {myAccStatement.Name}   |   {myAccStatement.Description}   |  {myAccStatement.Amount}   |  {myAccStatement.Balance}  |  {myAccStatement.Date} |\n\n");
+					writer.WriteLine($"| {myAccStatement.Id}   |   {myAccStatement.Name}   |  {myAccStatement.Acc_Involved}  | {myAccStatement.Description}   |  {myAccStatement.Amount}   |  {myAccStatement.Balance}  |  {myAccStatement.Date} |\n\n");
 				}
+				
+				//
+				AccountStatement myAccStatement2 = new AccountStatement(loggedInCustomer.CustomerId, loggedInCustomer.Fullname,receiver.AccountNumber, $"You Received {CleanAmountToTransfer} from {giver.AccountNumber}", $"{CleanAmountToTransfer}", receiver.Balance, DateTime.Now);
 
+				using (StreamWriter writer = new StreamWriter("AccountStatements.txt", true))
+				{
+					writer.WriteLine($"| {myAccStatement2.Id}   |   {myAccStatement2.Name}   | {myAccStatement2.Acc_Involved} |  {myAccStatement2.Description}   |  {myAccStatement2.Amount}   |  {myAccStatement2.Balance}  |  {myAccStatement2.Date} |\n\n");
+				}
 
 
 			}
@@ -68,8 +75,24 @@ namespace Bank_UsingFileAsDatabase.Implementations.Account_Implementation
 				giver.Balance -= CleanAmountToTransfer;
 				receiver.Balance += CleanAmountToTransfer;
 				Console.WriteLine($"{CleanAmountToTransfer} has been Sent to {AccountToTransferTo} successfully!");
+
+				//
+				AccountStatement myAccStatement = new AccountStatement(loggedInCustomer.CustomerId, loggedInCustomer.Fullname,giver.AccountNumber, $"You Transfered {CleanAmountToTransfer} to {receiver.AccountNumber}", $"{CleanAmountToTransfer}", giver.Balance, DateTime.Now);
+
+				using (StreamWriter writer = new StreamWriter("AccountStatements.txt", true))
+				{
+					writer.WriteLine($"| {myAccStatement.Id}   |   {myAccStatement.Name}   | {myAccStatement.Acc_Involved}  |  {myAccStatement.Description}   |  {myAccStatement.Amount}   |  {myAccStatement.Balance}  |  {myAccStatement.Date} |\n\n");
+				}
+
+				//
+				AccountStatement myAccStatement2 = new AccountStatement(loggedInCustomer.CustomerId, loggedInCustomer.Fullname,receiver.AccountNumber, $"You Received {CleanAmountToTransfer} from {giver.AccountNumber}", $"{CleanAmountToTransfer}", giver.Balance, DateTime.Now);
+
+				using (StreamWriter writer = new StreamWriter("AccountStatements.txt", true))
+				{
+					writer.WriteLine($"| {myAccStatement2.Id}   |   {myAccStatement2.Name}   | {myAccStatement2.Acc_Involved} | {myAccStatement2.Description}   |  {myAccStatement2.Amount}   |  {myAccStatement2.Balance}  |  {myAccStatement2.Date} |\n\n");
+				}
 			}
-			else
+			else 
 			{
 				Console.Clear();
 				Console.WriteLine($"\n\nError in Transaction!\n\n");
